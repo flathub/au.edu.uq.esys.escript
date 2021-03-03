@@ -14,9 +14,9 @@
     </p>
   </description>
   <launchable type="desktop-id">au.edu.uq.esys.escript.desktop</launchable>
-  <url type="homepage">https://launchpad.net/escript-finley/</url>
+  <url type="homepage">https://github.com/esys-escript/esys-escript.github.io</url>
   <releases>
-    <release date="2020-02-06" version="5.7">
+    <release date="2021-03-04" version="5.7">
       <description>
         <p>
           This release contains eScript version 5.7.
@@ -30,8 +30,8 @@
       <image type="source">https://i.imgur.com/loEOeYp.png</image>
     </screenshot>
   </screenshots>
-  <url type="bugtracker">https://launchpad.net/escript-finley/</url>
-  <url type="help">https://launchpad.net/escript-finley/</url>
+  <url type="bugtracker">https://github.com/esys-escript/esys-escript.github.io/issues</url>
+  <url type="help">https://github.com/esys-escript/esys-escript.github.io/issues</url>
   <update_contact>a.ellery@uq.edu.au</update_contact>
   <translation>EN</translation>
   <content_rating type="oars-1.0">
