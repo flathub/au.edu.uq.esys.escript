@@ -6,11 +6,11 @@
   <project_license>Apache-2.0</project_license>
   <name>esys-escript</name>
   <summary> 
-    esys-escript is a python module for implementing mathematical models using the finite element method
+    esys-escript is a python module for solving partial differential equations using the finite element method
   </summary>
   <description>
     <p>
-      esys-escript is a programming tool for implementing mathematical models in python using the finite element method (FEM). As users do not access the data structures it is very easy to use and scripts can run on desktop computers as well as highly parallel supercomputer without changes. Scripts are executed in parallel using MPI, OpenMP and hybrid mode processing over 50 million unknowns on several thousand cores on a parallel computer.
+      esys-escript is a programming tool for solving partial differential equations in python using the finite element method (FEM). It is very easy to use and scripts can run on desktop computers as well as highly parallel supercomputer without changes. Scripts are executed in parallel using MPI, OpenMP and hybrid mode processing over 50 million unknowns on several thousand cores on a parallel computer.
     </p>
   </description>
   <launchable type="desktop-id">au.edu.uq.esys.escript.desktop</launchable>
