@@ -1,7 +1,7 @@
 {
     "app-id": "au.edu.uq.esys.escript",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "18.08",
+    "runtime-version": "21.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "run-escript",
     "cleanup": [
