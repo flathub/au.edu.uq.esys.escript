@@ -1,0 +1,30 @@
+From d9cdd4167f957128949a258eba65e8334c543500 Mon Sep 17 00:00:00 2001
+From: bbhtt <bbhtt.zn0i8@slmail.me>
+Date: Thu, 20 Jul 2023 09:32:07 +0530
+Subject: [PATCH] Fix python path
+
+---
+ scons/flatpak_options.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/scons/flatpak_options.py b/scons/flatpak_options.py
+index 1868a9909..6394b3ffe 100644
+--- a/scons/flatpak_options.py
++++ b/scons/flatpak_options.py
+@@ -32,9 +32,10 @@ import sys
+
+ cxx_extra='-w -O3'
+
+-pythoncmd='/app/bin/python3'
+-pythonlibpath = '/app/lib'
+-pythonincpath = '/app/include/python3.7m'
++pythoncmd='python3'
++pythonlibpath='/app/lib/python3.10'
++pythonincpath='/app/include/python3.10'
++pythonlibname='python3.10'
+
+ boost_prefix=['/app/include','/app/lib']
+ netcdf = 4
+--
+2.41.0
+
