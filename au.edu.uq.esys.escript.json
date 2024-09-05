@@ -1,7 +1,7 @@
 {
     "app-id": "au.edu.uq.esys.escript",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "22.08",
+    "runtime-version": "23.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "run-escript",
     "cleanup": [
@@ -9,6 +9,22 @@
         "/app/share"
     ],
     "modules": [
+        {
+            "name": "python",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "./configure --prefix=/app --exec-prefix=/app --enable-shared",
+                "make install -j`nproc --all`"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.python.org/ftp/python/3.10.12/Python-3.10.12.tar.xz",
+                    "sha256": "afb74bf19130e7a47d10312c8f5e784f24e0527981eab68e20546cfb865830b8"
+                }
+            ]
+        },
         "python3-modules.json",
         {
             "name": "proj",
@@ -20,8 +36,22 @@
                 {
                     "type": "git",
                     "url": "https://github.com/OSGeo/PROJ.git",
-                    "tag": "9.2.1",
-                    "commit": "5405125a6544126b86af3f2cee53d954e4eb28b5"
+                    "tag": "9.4.1",
+                    "commit": "875a485fa5ef435c57f7682f904dd31ca92253ab"
+                }
+            ]
+        },
+        {
+            "name": "cython-pyproj",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} cython"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/7f/a2/fd5ced5dd33597ef291861bfadd46820de417b41bcb6ca2fa0b5f6fa8152/Cython-3.0.0.tar.gz",
+                    "sha256": "350b18f9673e63101dbbfcf774ee2f57c20ac4636d255741d76ca79016b1bd82"
                 }
             ]
         },
@@ -36,8 +66,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/pyproj4/pyproj.git",
-                    "tag": "3.6.0",
-                    "commit": "32565ddf266658aebc9787b7534fdbdd06762839"
+                    "tag": "3.6.1",
+                    "commit": "0c5159aab8c32488584ae472b3752203f1005559"
                 }
             ]
         },
@@ -61,10 +91,10 @@
             "name": "zlib",
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://zlib.net/zlib-1.2.13.tar.gz",
-                    "sha256": "b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30"
-
+                    "type": "git",
+                    "url": "https://github.com/madler/zlib.git",
+                    "tag": "v1.3.1",
+                    "commit": "51b7f2abdade71cd9bb0e7a373ef2610ec6f9daf"
                 }
             ]
         },
@@ -122,22 +152,6 @@
             ]
         },
         {
-            "name": "python",
-            "builddir": true,
-            "buildsystem": "simple",
-            "build-commands": [
-                "./configure --prefix=/app --exec-prefix=/app --enable-shared",
-                "make install -j`nproc --all`"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://www.python.org/ftp/python/3.10.12/Python-3.10.12.tar.xz",
-                    "sha256": "afb74bf19130e7a47d10312c8f5e784f24e0527981eab68e20546cfb865830b8"
-                }
-            ]
-        },
-        {
             "name": "escript",
             "buildsystem": "simple",
             "build-commands": [
@@ -149,7 +163,7 @@
                 "cp ./tools/flatpak/64x64_au.edu.uq.esys.escript.png /app/share/icons/hicolor/64x64/apps/au.edu.uq.esys.escript.png",
                 "cp ./tools/flatpak/128x128_au.edu.uq.esys.escript.png /app/share/icons/hicolor/128x128/apps/au.edu.uq.esys.escript.png",
                 "cp ./tools/flatpak/256x256_au.edu.uq.esys.escript.png /app/share/icons/hicolor/256x256/apps/au.edu.uq.esys.escript.png",
-                "scons options_file=scons/flatpak_options.py umfpack=0 trilinos=0 werror=0 silo=0 cxx_extra='-fPIC -Wno-psabi' -j`nproc --all`"
+                "scons --verbose options_file=scons/flatpak_options.py umfpack=0 trilinos=0 werror=0 silo=0 cxx_extra='-fPIC -Wno-psabi' -j`nproc --all`"
             ],
             "sources": [
                 {
@@ -161,6 +175,12 @@
                 {
                     "type": "patch",
                     "path": "python.patch"
+                },
+                {
+                    "type": "patch",
+                    "paths": [
+                        "site_init.py.patch"
+                    ]
                 }
             ]
         }
