@@ -4,7 +4,6 @@
     "runtime-version": "23.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "run-escript",
-    ,
     "finish-args": [
         "--filesystem=home",
         "--share=network"
@@ -13,10 +12,10 @@
         {
             "name": "python",
             "builddir": true,
-            "buildsystem": "simple",
-            "build-commands": [
-                "./configure --prefix=/app --exec-prefix=/app --enable-shared",
-                "make install -j`nproc --all`"
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--exec-prefix=/app",
+                "--enable-shared"
             ],
             "sources": [
                 {
