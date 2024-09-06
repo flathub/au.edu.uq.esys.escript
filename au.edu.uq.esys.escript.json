@@ -155,6 +155,7 @@
             "name": "escript",
             "buildsystem": "simple",
             "build-commands": [
+                "ln -s /app/lib/python3.10/site-packages/numpy/core/include/numpy /app/include/",
                 "mkdir -p /app/share/icons/hicolor/64x64/apps",
                 "mkdir -p /app/share/icons/hicolor/128x128/apps/",
                 "mkdir -p /app/share/icons/hicolor/256x256/apps/",
