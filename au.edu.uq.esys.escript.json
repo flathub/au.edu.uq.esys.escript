@@ -175,7 +175,7 @@
                 },
                 {
                     "type": "patch",
-                    "path": "python.patch"
+                    "path": "flatpak_options.py.patch"
                 },
                 {
                     "type": "patch",
