@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2021 Adam Ellery <a.ellery@uq.edu.au> -->
-<application>
-  <id type="desktop">au.edu.uq.esys.escript</id>
+<component type="console-application">
+  <id>au.edu.uq.esys.escript</id>
   <metadata_license>CC-BY-SA-3.0</metadata_license>
   <project_license>Apache-2.0</project_license>
   <name>esys-escript</name>
   <summary> 
-    esys-escript is a python module for solving partial differential equations using the finite element method
+    Python module for solving partial differential equations using the finite element method
   </summary>
   <description>
     <p>
-      esys-escript is a programming tool for solving partial differential equations in python using the finite element method (FEM). It is very easy to use and scripts can run on desktop computers as well as highly parallel supercomputer without changes. Scripts are executed in parallel using MPI, OpenMP and hybrid mode processing over 50 million unknowns on several thousand cores on a parallel computer.
+      esys-escript is a programming tool for solving partial differential equations
+      in python using the finite element method (FEM). It is very easy to use and scripts
+      can run on desktop computers as well as highly parallel supercomputer without changes. 
+      Scripts are executed in parallel using MPI, OpenMP and hybrid mode processing 
+      over 50 million unknowns on several thousand cores on a parallel computer.
     </p>
   </description>
   <launchable type="desktop-id">au.edu.uq.esys.escript.desktop</launchable>
   <url type="homepage">https://github.com/esys-escript/esys-escript.github.io</url>
   <releases>
-    <release date="2021-03-04" version="5.7">
-      <description>
-        <p>
-          This release contains eScript version 5.7.
-        </p>
-      </description>
-    </release>
+    <release date="2022-07-28" version="5.10"></release>
   </releases>
   <developer_name>University of Queensland</developer_name>
   <screenshots>
     <screenshot>
-      <image type="source">https://i.imgur.com/loEOeYp.png</image>
+      <image type="default">https://i.imgur.com/loEOeYp.png</image>
     </screenshot>
   </screenshots>
-  <url type="bugtracker">https://github.com/esys-escript/esys-escript.github.io/issues</url>
-  <url type="help">https://github.com/esys-escript/esys-escript.github.io/issues</url>
+  <categories>
+      <category>Science</category>
+      <category>Education</category>
+  </categories>
+  <url type="bugtracker">https://github.com/LutzGross/esys-escript.github.io/issues</url>
   <update_contact>a.ellery@uq.edu.au</update_contact>
   <translation>EN</translation>
-  <content_rating type="oars-1.0">
+  <content_rating type="oars-1.1">
       <content_attribute id="violence-cartoon">none</content_attribute>
       <content_attribute id="violence-fantasy">none</content_attribute>
       <content_attribute id="violence-realistic">none</content_attribute>
@@ -56,4 +57,7 @@
       <content_attribute id="money-purchasing">none</content_attribute>
       <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
-</application>
+  <provides>
+      <binary>run-escript</binary>
+  </provides>
+</component>
