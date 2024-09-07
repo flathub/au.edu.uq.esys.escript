@@ -159,7 +159,7 @@
                 "scons options_file=scons/flatpak_options.py umfpack=0 trilinos=0 werror=0 silo=0 cxx_extra='-fPIC -Wno-psabi' -j`nproc --all`"
             ],
             "post-install" : [
-                "install -Dm644 tools/flatpak/au.edu.uq.esys.escript.pgn /app/share/icons/hicolor/256x256/apps/au.edu.uq.esys.escript.pgn",
+                "install -Dm644 tools/flatpak/au.edu.uq.esys.escript.png /app/share/icons/hicolor/256x256/apps/au.edu.uq.esys.escript.png",
                 "install -Dm644 tools/flatpak/au.edu.uq.esys.escript.desktop /app/share/applications/au.edu.uq.esys.escript.desktop",
                 "install -Dm644 au.edu.uq.esys.escript.appdata.xml /app/share/appdata/au.edu.uq.esys.escript.appdata.xml"
             ],
