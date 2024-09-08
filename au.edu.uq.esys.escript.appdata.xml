@@ -20,7 +20,7 @@
   <launchable type="desktop-id">au.edu.uq.esys.escript.desktop</launchable>
   <url type="homepage">https://github.com/esys-escript/esys-escript.github.io</url>
   <releases>
-    <release date="2022-07-28" version="5.10"></release>
+    <release date="2023-07-20" version="5.10.1"></release>
   </releases>
   <developer_name>University of Queensland</developer_name>
   <screenshots>
