@@ -167,8 +167,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/LutzGross/esys-escript.github.io.git",
-                    "tag": "5.10",
-                    "commit": "5901b8bf196439f5ff15c780950c1b37e538fc85"
+                    "tag": "6.0.0",
+                    "commit": "001bfeef67d69d460e36c32859e3e8edeee281c4"
                 },
                 {
                     "type": "patch",
