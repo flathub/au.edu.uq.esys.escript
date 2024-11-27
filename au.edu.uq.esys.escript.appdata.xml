@@ -23,6 +23,7 @@
     <release date="2022-07-28" version="5.10"></release>
   </releases>
   <developer_name>University of Queensland</developer_name>
+  <icon type="stock">au.edu.uq.esys.escript</icon>
   <screenshots>
     <screenshot type="default">
       <image>https://i.imgur.com/loEOeYp.png</image>
