@@ -6,7 +6,12 @@
     "command": "run-escript",
     "finish-args": [
         "--filesystem=home",
-        "--share=network"
+        "--share=network",
+        "--share=ipc",
+        "--device=dri",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--env=PATH=/var/data/python/bin:/app/bin:/usr/bin"
     ],
     "modules": [
         {
@@ -152,10 +157,25 @@
             ]
         },
         {
+            "name": "pip",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm755 pip.pyz -t /app/bin/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://bootstrap.pypa.io/pip/pip.pyz",
+                    "sha256": "c59df64b826d5baa978829fd1e1b3ea2e748f73dce7cce58d09aa28a1c9323a7"
+                }
+            ]
+        },
+        {
             "name": "escript",
             "buildsystem": "simple",
             "build-commands": [
                 "ln -s /app/lib/python3.10/site-packages/numpy/core/include/numpy /app/include/",
+                "ln -s /app/bin/pip.pyz /app/bin/pip",
                 "scons options_file=scons/flatpak_options.py umfpack=0 trilinos=0 werror=0 silo=0 cxx_extra='-fPIC -Wno-psabi' -j`nproc --all`"
             ],
             "post-install" : [
