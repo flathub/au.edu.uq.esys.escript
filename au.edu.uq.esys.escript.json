@@ -160,7 +160,7 @@
             "name": "pip",
             "buildsystem": "simple",
             "build-commands": [
-                "install -Dm644 pip.pyz -t /app/bin/"
+                "install -Dm755 pip.pyz -t /app/bin/"
             ],
             "sources": [
                 {
