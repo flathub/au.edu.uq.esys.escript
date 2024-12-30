@@ -64,15 +64,15 @@
             "name": "boost",
             "buildsystem": "simple",
             "build-commands": [
-                "./bootstrap.sh --with-toolset=gcc --with-icu --with-python-version=3.10",
+                "./bootstrap.sh --with-toolset=gcc --with-icu --with-python-version=3.12",
                 "./b2 stage --prefix=\"${FLATPAK_DEST}\" --with-python --with-iostreams --with-random variant=release threading=multi link=shared toolset=gcc  debug-symbols=off",
                 "./b2 install --prefix=\"${FLATPAK_DEST}\" --with-python --with-iostreams --with-random variant=release  threading=multi link=shared toolset=gcc debug-symbols=off"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.tar.bz2",
-                    "sha256": "a6e1ab9b0860e6a2881dd7b21fe9f737a095e5f33a3a874afc6a345228597ee6"
+                    "url": "https://downloads.sourceforge.net/boost/boost/1.87.0/boost_1_87_0.tar.bz2",
+                    "sha256": "af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89"
                 }
             ]
         },
@@ -108,8 +108,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://mirror.sobukus.de/files/src/netcdf/netcdf-c-4.9.2.tar.gz",
-                    "sha256": "cf11babbbdb9963f09f55079e0b019f6d0371f52f8e1264a5ba8e9fdab1a6c48"
+                    "url": "https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.2.tar.gz",
+                    "sha256": "bc104d101278c68b303359b3dc4192f81592ae8640f1aee486921138f7f88cb7"
                 }
             ]
         },
@@ -118,8 +118,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url":  "https://mirror.sobukus.de/files/src/netcdf/netcdf-cxx4-4.3.1.tar.gz",
-                    "sha256": "6a1189a181eed043b5859e15d5c080c30d0e107406fbb212c8fb9814e90f3445"
+                    "url":  "https://github.com/Unidata/netcdf-cxx4/archive/refs/tags/v4.3.1.tar.gz",
+                    "sha256": "e3fe3d2ec06c1c2772555bf1208d220aab5fee186d04bd265219b0bc7a978edc"
                 }
             ]
         },
