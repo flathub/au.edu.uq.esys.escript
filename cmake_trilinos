@@ -1,6 +1,4 @@
-#!/bin/bash
-
-cmake \
+cmake -B BUILD \
 -D MPI_C_COMPILER=`which mpicc` \
 -D MPI_CXX_COMPILER=`which mpic++` \
 -D MPI_Fortran_COMPILER=`which mpif90` \
@@ -52,4 +50,7 @@ cmake \
 -D KOKKOS_ENABLE_COMPILER_WARNINGS=ON \
 -D Amesos2_ENABLE_Basker=ON \
 -D Tpetra_INST_SERIAL:BOOL=ON \
--D Trilinos_ENABLE_TESTS=OFF ..
+-D Trilinos_ENABLE_Gtest:BOOL=OFF \
+-D Trilinos_ENABLE_TESTS:BOOL=OFF \
+-D Trilinos_ENABLE_TrilinosFrameworkTests:BOOL=OFF \
+-D Trilinos_ENABLE_TrilinosATDMConfigTests:BOOL=OFF
