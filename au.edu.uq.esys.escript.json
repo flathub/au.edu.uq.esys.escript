@@ -155,6 +155,63 @@
             ]
         },
         {
+            "name": "trilinos",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DMPI_C_COMPILER='which mpicc'",
+                "-DMPI_CXX_COMPILER='which mpic++'",
+                "-DMPI_Fortran_COMPILER='which mpif90'",
+                "-DTrilinos_ENABLE_CXX11=ON",
+                "-DCMAKE_C_FLAGS=' -w -fopenmp'",
+                "-DCMAKE_CXX_FLAGS=' -w -fopenmp'",
+                "-DTrilinos_ENABLE_Fortran=ON",
+                "-DBUILD_SHARED_LIBS=ON",
+                "-DTPL_ENABLE_BLAS=ON",
+                "-DTPL_ENABLE_Boost=ON",
+                "-DTPL_ENABLE_Cholmod=ON",
+                "-DTPL_ENABLE_LAPACK=ON",
+                "-DTPL_ENABLE_METIS=ON",
+                "-DTPL_ENABLE_SuperLU=OFF",
+                "-DTPL_ENABLE_UMFPACK=ON",
+                "-DTPL_ENABLE_PARMETIS=ON",
+                "-DTPL_ENABLE_SCALAPACK=ON",
+                "-DTPL_ENABLE_MUMPS=OFF",
+                "-DTrilinos_ENABLE_Amesos=ON",
+                "-DTrilinos_ENABLE_Amesos2=ON",
+                "-DTrilinos_ENABLE_AztecOO=ON",
+                "-DTrilinos_ENABLE_Belos=ON",
+                "-DTrilinos_ENABLE_Ifpack=ON",
+                "-DTrilinos_ENABLE_Ifpack2=ON",
+                "-DTrilinos_ENABLE_Kokkos=ON",
+                "-DTrilinos_ENABLE_Komplex=ON",
+                "-DTrilinos_ENABLE_ML=ON",
+                "-DTrilinos_ENABLE_MueLu=ON",
+                "-DTrilinos_ENABLE_Teuchos=ON",
+                "-DTrilinos_ENABLE_Tpetra=ON",
+                "-DTrilinos_ENABLE_ALL_OPTIONAL_PACKAGES=ON",
+                "-DKOKKOS_ENABLE_AGGRESSIVE_VECTORIZATION=ON",
+                "-DTpetra_INST_COMPLEX_DOUBLE=ON",
+                "-DTeuchos_ENABLE_COMPLEX=ON",
+                "-DTpetra_INST_INT_INT=ON",
+                "-DTpetra_ENABLE_DEPRECATED_CODE=ON",
+                "-DTrilinos_ENABLE_OpenMP=ON",
+                "-DTrilinos_ENABLE_MPI=ON",
+                "-DTrilinos_ENABLE_EXPLICIT_INSTANTIATION=ON",
+                "-DKOKKOS_ENABLE_COMPILER_WARNINGS=ON",
+                "-DAmesos2_ENABLE_Basker=ON",
+                "-DTpetra_INST_SERIAL:BOOL=ON",
+                "-DTrilinos_ENABLE_TESTS=OFF"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/trilinos/Trilinos.git",
+                    "tag": "trilinos-release-16-0-0",
+                    "commit": "c6f6bea715046c00b327f5ddaacdc372dccd3f64"
+                }
+            ]
+        },
+        {
             "name": "escript",
             "buildsystem": "simple",
             "build-commands": [
