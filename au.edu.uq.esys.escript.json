@@ -156,51 +156,12 @@
         },
         {
             "name": "trilinos",
-            "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DMPI_C_COMPILER='which mpicc'",
-                "-DMPI_CXX_COMPILER='which mpic++'",
-                "-DMPI_Fortran_COMPILER='which mpif90'",
-                "-DTrilinos_ENABLE_CXX11=ON",
-                "-DCMAKE_C_FLAGS=' -w -fopenmp'",
-                "-DCMAKE_CXX_FLAGS=' -w -fopenmp'",
-                "-DTrilinos_ENABLE_Fortran=ON",
-                "-DBUILD_SHARED_LIBS=ON",
-                "-DTPL_ENABLE_BLAS=ON",
-                "-DTPL_ENABLE_Boost=ON",
-                "-DTPL_ENABLE_Cholmod=ON",
-                "-DTPL_ENABLE_LAPACK=ON",
-                "-DTPL_ENABLE_METIS=ON",
-                "-DTPL_ENABLE_SuperLU=OFF",
-                "-DTPL_ENABLE_UMFPACK=ON",
-                "-DTPL_ENABLE_PARMETIS=ON",
-                "-DTPL_ENABLE_SCALAPACK=ON",
-                "-DTPL_ENABLE_MUMPS=OFF",
-                "-DTrilinos_ENABLE_Amesos=ON",
-                "-DTrilinos_ENABLE_Amesos2=ON",
-                "-DTrilinos_ENABLE_AztecOO=ON",
-                "-DTrilinos_ENABLE_Belos=ON",
-                "-DTrilinos_ENABLE_Ifpack=ON",
-                "-DTrilinos_ENABLE_Ifpack2=ON",
-                "-DTrilinos_ENABLE_Kokkos=ON",
-                "-DTrilinos_ENABLE_Komplex=ON",
-                "-DTrilinos_ENABLE_ML=ON",
-                "-DTrilinos_ENABLE_MueLu=ON",
-                "-DTrilinos_ENABLE_Teuchos=ON",
-                "-DTrilinos_ENABLE_Tpetra=ON",
-                "-DTrilinos_ENABLE_ALL_OPTIONAL_PACKAGES=ON",
-                "-DKOKKOS_ENABLE_AGGRESSIVE_VECTORIZATION=ON",
-                "-DTpetra_INST_COMPLEX_DOUBLE=ON",
-                "-DTeuchos_ENABLE_COMPLEX=ON",
-                "-DTpetra_INST_INT_INT=ON",
-                "-DTpetra_ENABLE_DEPRECATED_CODE=ON",
-                "-DTrilinos_ENABLE_OpenMP=ON",
-                "-DTrilinos_ENABLE_MPI=ON",
-                "-DTrilinos_ENABLE_EXPLICIT_INSTANTIATION=ON",
-                "-DKOKKOS_ENABLE_COMPILER_WARNINGS=ON",
-                "-DAmesos2_ENABLE_Basker=ON",
-                "-DTpetra_INST_SERIAL:BOOL=ON",
-                "-DTrilinos_ENABLE_TESTS=OFF"
+            "buildsystem": "simple",
+            "builddir": true,
+            "build-commands":[
+                "rm ../CMakeCache.txt",
+                "chmod +x ../cmake_trilinos",
+                "../cmake_trilinos"
             ],
             "sources": [
                 {
@@ -208,6 +169,10 @@
                     "url": "https://github.com/trilinos/Trilinos.git",
                     "tag": "trilinos-release-16-0-0",
                     "commit": "c6f6bea715046c00b327f5ddaacdc372dccd3f64"
+                },
+                {
+                    "type": "file",
+                    "path": "cmake_trilinos"
                 }
             ]
         },
@@ -217,7 +182,7 @@
             "build-commands": [
                 "ln -s /app/lib/python3.10/site-packages/numpy/core/include/numpy /app/include/",
                 "ln -s /app/bin/pip.pyz /app/bin/pip",
-                "scons options_file=scons/flatpak_options.py umfpack=0 trilinos=0 werror=0 silo=0 cxx_extra='-fPIC -Wno-psabi' -j`nproc --all`"
+                "scons options_file=scons/flatpak_options.py umfpack=0 trilinos=1 werror=0 silo=0 cxx_extra='-fPIC -Wno-psabi' -j`nproc --all`"
             ],
             "post-install" : [
                 "install -Dm644 tools/flatpak/au.edu.uq.esys.escript.png /app/share/icons/hicolor/256x256/apps/au.edu.uq.esys.escript.png",
