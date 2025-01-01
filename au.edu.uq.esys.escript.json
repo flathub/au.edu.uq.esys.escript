@@ -155,13 +155,46 @@
             ]
         },
         {
+            "name": "lapack-trilinos",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DBUILD_SHARED_LIBS=ON",
+                "-DBUILD_TESTING=OFF",
+                "-DLAPACKE=ON",
+                "-DCBLAS=ON"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.12.0.tar.gz",
+                    "sha256": "eac9570f8e0ad6f30ce4b963f4f033f0f643e7c3912fc9ee6cd99120675ad48b"
+                }
+            ]
+        },
+        {
+            "name": "openblas-trilinos",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DBUILD_TESTING:BOOL=OFF",
+                "-DDYNAMIC_ARCH:BOOL=ON"
+            ],
+            "cleanup": ["/include/openblas"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/xianyi/OpenBLAS/releases/download/v0.3.28/OpenBLAS-0.3.28.tar.gz",
+                    "sha256": "f1003466ad074e9b0c8d421a204121100b0751c96fc6fcf3d1456bd12f8a00a1"
+                }
+            ]
+        },
+        {
             "name": "trilinos",
             "buildsystem": "simple",
             "builddir": true,
             "build-commands":[
-                "rm ../CMakeCache.txt",
-                "chmod +x ../cmake_trilinos",
-                "../cmake_trilinos"
+                "chmod +x cmake_trilinos",
+                "./cmake_trilinos"
             ],
             "sources": [
                 {
