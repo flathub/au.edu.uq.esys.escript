@@ -55,4 +55,6 @@ cmake -B BUILD \
 -D Trilinos_ENABLE_Gtest:BOOL=OFF \
 -D Trilinos_ENABLE_TESTS:BOOL=OFF \
 -D Trilinos_ENABLE_TrilinosFrameworkTests:BOOL=OFF \
--D Trilinos_ENABLE_TrilinosATDMConfigTests:BOOL=OFF
+-D Trilinos_ENABLE_TrilinosATDMConfigTests:BOOL=OFF \
+-D CMAKE_C_FLAGS="$CFLAGS -Wno-incompatible-pointer-types" \
+-D CMAKE_Fortran_FLAGS="$FCFLAGS -fallow-argument-mismatch"
