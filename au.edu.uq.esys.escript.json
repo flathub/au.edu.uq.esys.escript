@@ -64,9 +64,9 @@
             "name": "boost",
             "buildsystem": "simple",
             "build-commands": [
-                "./bootstrap.sh --with-toolset=gcc --with-icu --with-python-version=3.12",
-                "./b2 stage --prefix=\"${FLATPAK_DEST}\" --with-python --with-iostreams --with-random variant=release threading=multi link=shared toolset=gcc  debug-symbols=off",
-                "./b2 install --prefix=\"${FLATPAK_DEST}\" --with-python --with-iostreams --with-random variant=release  threading=multi link=shared toolset=gcc debug-symbols=off"
+                "./bootstrap.sh --prefix=/app/ --with-libraries=locale,filesystem,system,date_time,regex,program_options --with-icu --with-python-version=3.12 --with-toolset=gcc",
+                "./b2 headers",
+                "./b2 -j$FLATPAK_BUILDER_N_JOBS install variant=release cxxstd=17 --layout=system"
             ],
             "sources": [
                 {
