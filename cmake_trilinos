@@ -9,6 +9,7 @@ cmake -B BUILD \
 -D CMAKE_CXX_FLAGS=' -w -fopenmp'\
 -D Trilinos_ENABLE_Fortran=ON \
 -D BUILD_SHARED_LIBS=ON \
+-D TPL_ENABLE_MPI=ON \
 -D TPL_ENABLE_BLAS=ON \
 -D TPL_ENABLE_Boost=ON \
 -D TPL_ENABLE_Cholmod=ON \
@@ -26,6 +27,7 @@ cmake -B BUILD \
 -D TPL_Boost_INCLUDE_DIRS=/app/include/boost/include \
 -D TPL_Boost_LIBRARY_DIRS=/app/lib \
 -D TPL_MUMPS_INCLUDE_DIRS='/usr/include/mumps-seq-shared/' \
+-D MPI_BASE_DIR=/app/ \
 -D Trilinos_ENABLE_Amesos=ON \
 -D Trilinos_ENABLE_Amesos2=ON \
 -D Trilinos_ENABLE_AztecOO=ON \
