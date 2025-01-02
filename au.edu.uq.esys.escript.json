@@ -156,6 +156,7 @@
         },
         {
             "name": "lapack-trilinos",
+            "builddir": true,
             "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DBUILD_SHARED_LIBS=ON",
