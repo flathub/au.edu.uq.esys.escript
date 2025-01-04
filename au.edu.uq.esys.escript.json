@@ -200,12 +200,12 @@
             ]
         },
         {
-            "name": "suitesparse",
+            "name": "suitesparse-trilinos",
             "buildsystem": "cmake-ninja",
             "build-opts":[
                 "-DBUILD_STATIC_LIBS=OFF",
                 "-DBUILD_SHARED_LIBS=ON",
-                "-DSUITESPARSE_ENABLE_PROJECTS=cholmod;amd;colamd;cxsparse"
+                "-DSUITESPARSE_ENABLE_PROJECTS=cholmod;umfpack;colamd;cxsparse"
             ],
             "cleanup":[
                 "/bin",
