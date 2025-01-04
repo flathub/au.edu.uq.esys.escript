@@ -200,9 +200,39 @@
             ]
         },
         {
+            "name": "METIS-GKlib",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make config cc=gcc prefix=/app/ openmp=set",
+                "make",
+                "make install"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/KarypisLab/GKlib.git",
+                    "commit": "8bd6bad750b2b0d90800c632cf18e8ee93ad72d7"
+                }
+            ]
+        },
+        {
+            "name": "METIS-trilinos",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make config shared=1 cc=gcc prefix=/app/",
+                "make install"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/KarypisLab/METIS.git",
+                    "commit": "e0f1b88b8efcb24ffa0ec55eabb78fbe61e58ae7"
+                }
+            ]
+        },
+        {
             "name": "trilinos",
             "buildsystem": "simple",
-            "builddir": true,
             "build-commands":[
                 "chmod +x cmake_trilinos",
                 "./cmake_trilinos"
