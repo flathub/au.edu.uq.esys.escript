@@ -14,22 +14,6 @@
         "--env=PATH=/var/data/python/bin:/app/bin:/usr/bin"
     ],
     "modules": [
-        {
-            "name": "python",
-            "builddir": true,
-            "buildsystem": "autotools",
-            "config-opts": [
-                "--exec-prefix=/app",
-                "--enable-shared"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://www.python.org/ftp/python/3.10.12/Python-3.10.12.tar.xz",
-                    "sha256": "afb74bf19130e7a47d10312c8f5e784f24e0527981eab68e20546cfb865830b8"
-                }
-            ]
-        },
         "python3-modules.json",
         {
             "name": "proj",
@@ -80,15 +64,15 @@
             "name": "boost",
             "buildsystem": "simple",
             "build-commands": [
-                "./bootstrap.sh --with-toolset=gcc --with-icu --with-python-version=3.10",
-                "./b2 stage --prefix=\"${FLATPAK_DEST}\" --with-python --with-iostreams --with-random variant=release threading=multi link=shared toolset=gcc  debug-symbols=off",
-                "./b2 install --prefix=\"${FLATPAK_DEST}\" --with-python --with-iostreams --with-random variant=release  threading=multi link=shared toolset=gcc debug-symbols=off"
+                "./bootstrap.sh --prefix=/app/ --with-libraries=locale,filesystem,system,date_time,regex,program_options --with-icu --with-python-version=3.12 --with-toolset=gcc",
+                "./b2 headers",
+                "./b2 -j$FLATPAK_BUILDER_N_JOBS install variant=release cxxstd=17 --layout=system"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.tar.bz2",
-                    "sha256": "a6e1ab9b0860e6a2881dd7b21fe9f737a095e5f33a3a874afc6a345228597ee6"
+                    "url": "https://downloads.sourceforge.net/boost/boost/1.87.0/boost_1_87_0.tar.bz2",
+                    "sha256": "af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89"
                 }
             ]
         },
@@ -124,8 +108,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://mirror.sobukus.de/files/src/netcdf/netcdf-c-4.9.2.tar.gz",
-                    "sha256": "cf11babbbdb9963f09f55079e0b019f6d0371f52f8e1264a5ba8e9fdab1a6c48"
+                    "url": "https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.2.tar.gz",
+                    "sha256": "bc104d101278c68b303359b3dc4192f81592ae8640f1aee486921138f7f88cb7"
                 }
             ]
         },
@@ -134,8 +118,18 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url":  "https://mirror.sobukus.de/files/src/netcdf/netcdf-cxx4-4.3.1.tar.gz",
-                    "sha256": "6a1189a181eed043b5859e15d5c080c30d0e107406fbb212c8fb9814e90f3445"
+                    "url":  "https://github.com/Unidata/netcdf-cxx4/archive/refs/tags/v4.3.1.tar.gz",
+                    "sha256": "e3fe3d2ec06c1c2772555bf1208d220aab5fee186d04bd265219b0bc7a978edc"
+                }
+            ]
+        },
+        {
+            "name": "openmpi-trilinos",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url":  "https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.6.tar.bz2",
+                    "sha256": "bd4183fcbc43477c254799b429df1a6e576c042e74a2d2f8b37d537b2ff98157"
                 }
             ]
         },
@@ -171,12 +165,98 @@
             ]
         },
         {
+            "name": "lapack-trilinos",
+            "builddir": true,
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DBUILD_SHARED_LIBS=ON",
+                "-DBUILD_TESTING=OFF",
+                "-DLAPACKE=ON",
+                "-DCBLAS=ON"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.12.0.tar.gz",
+                    "sha256": "eac9570f8e0ad6f30ce4b963f4f033f0f643e7c3912fc9ee6cd99120675ad48b"
+                }
+            ]
+        },
+        {
+            "name": "openblas-trilinos",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DBUILD_TESTING:BOOL=OFF",
+                "-DDYNAMIC_ARCH:BOOL=ON"
+            ],
+            "cleanup": ["/include/openblas"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/xianyi/OpenBLAS/releases/download/v0.3.28/OpenBLAS-0.3.28.tar.gz",
+                    "sha256": "f1003466ad074e9b0c8d421a204121100b0751c96fc6fcf3d1456bd12f8a00a1"
+                }
+            ]
+        },
+        {
+            "name": "METIS-GKlib",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make config cc=gcc prefix=/app/ openmp=set",
+                "make",
+                "make install"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/KarypisLab/GKlib.git",
+                    "commit": "8bd6bad750b2b0d90800c632cf18e8ee93ad72d7"
+                }
+            ]
+        },
+        {
+            "name": "METIS-trilinos",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make config shared=1 cc=gcc prefix=/app/",
+                "make install"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/KarypisLab/METIS.git",
+                    "commit": "e0f1b88b8efcb24ffa0ec55eabb78fbe61e58ae7"
+                }
+            ]
+        },
+        {
+            "name": "trilinos",
+            "buildsystem": "simple",
+            "build-commands":[
+                "chmod +x cmake_trilinos",
+                "./cmake_trilinos"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/trilinos/Trilinos.git",
+                    "tag": "trilinos-release-16-0-0",
+                    "commit": "c6f6bea715046c00b327f5ddaacdc372dccd3f64"
+                },
+                {
+                    "type": "file",
+                    "path": "cmake_trilinos"
+                }
+            ]
+        },
+        {
             "name": "escript",
             "buildsystem": "simple",
             "build-commands": [
                 "ln -s /app/lib/python3.10/site-packages/numpy/core/include/numpy /app/include/",
                 "ln -s /app/bin/pip.pyz /app/bin/pip",
-                "scons options_file=scons/flatpak_options.py umfpack=0 trilinos=0 werror=0 silo=0 cxx_extra='-fPIC -Wno-psabi' -j`nproc --all`"
+                "scons options_file=scons/flatpak_options.py umfpack=0 trilinos=1 werror=0 silo=0 cxx_extra='-fPIC -Wno-psabi' -j`nproc --all`"
             ],
             "post-install" : [
                 "install -Dm644 tools/flatpak/au.edu.uq.esys.escript.png /app/share/icons/hicolor/256x256/apps/au.edu.uq.esys.escript.png",
@@ -187,8 +267,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/LutzGross/esys-escript.github.io.git",
-                    "tag": "5.10",
-                    "commit": "5901b8bf196439f5ff15c780950c1b37e538fc85"
+                    "tag": "6.0.0",
+                    "commit": "001bfeef67d69d460e36c32859e3e8edeee281c4"
                 },
                 {
                     "type": "patch",
