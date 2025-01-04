@@ -255,13 +255,20 @@
             }]
         },
         {
-            "name": "v2.2.1",
+            "name": "scalapack-trilinos",
             "buildsystem": "cmake-ninja",
+            "build-opts":[
+                "-DBUILD_SHARED_LIBS:BOOL=ON",
+                "-DSCALAPACK_BUILD_TESTS:BOOL=OFF",
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-fallow-argument-mismatch",
+                "-Wno-implicit-function-declaration"
+            ],
             "sources": [{
                 "type": "git",
                 "url": "https://github.com/Reference-ScaLAPACK/scalapack.git",
-                "tag": "v2.2.1",
-                "commit": "1cad194b1e9e0d4f0731cf0dab52144eb4492d41"
+                "tag": "v2.2.0",
+                "commit": "0128dc24c6d018b61ceaac080640014e1d5ec344"
             }]
         },
         {
