@@ -200,7 +200,7 @@
             ]
         },
         {
-            "name": "METIS-GKlib",
+            "name": "GKlib-METIS",
             "buildsystem": "simple",
             "build-commands": [
                 "make config cc=gcc prefix=/app/ openmp=set",
@@ -252,6 +252,16 @@
                 "url": "https://github.com/DrTimothyAldenDavis/SuiteSparse.git",
                 "tag": "v7.8.3",
                 "commit": "d3c4926d2c47fd6ae558e898bfc072ade210a2a1"
+            }]
+        },
+        {
+            "name": "v2.2.1",
+            "buildsystem": "cmake-ninja",
+            "sources": [{
+                "type": "git",
+                "url": "https://github.com/Reference-ScaLAPACK/scalapack.git",
+                "tag": "v2.2.1",
+                "commit": "1cad194b1e9e0d4f0731cf0dab52144eb4492d41"
             }]
         },
         {
