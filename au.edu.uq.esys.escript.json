@@ -231,6 +231,30 @@
             ]
         },
         {
+            "name": "suitesparse-trilinos",
+            "buildsystem": "cmake-ninja",
+            "build-opts":[
+                "-DBUILD_STATIC_LIBS=OFF",
+                "-DBUILD_SHARED_LIBS=ON",
+                "-DSUITESPARSE_ENABLE_PROJECTS=cholmod;umfpack;colamd;cxsparse"
+            ],
+            "cleanup":[
+                "/bin",
+                "/include",
+                "/lib/cmake",
+                "/lib/*.a",
+                "/lib/*.la",
+                "/lib/pkgconfig",
+                "/share/man"
+            ],
+            "sources": [{
+                "type": "git",
+                "url": "https://github.com/DrTimothyAldenDavis/SuiteSparse.git",
+                "tag": "v7.8.3",
+                "commit": "d3c4926d2c47fd6ae558e898bfc072ade210a2a1"
+            }]
+        },
+        {
             "name": "trilinos",
             "buildsystem": "simple",
             "build-commands":[
