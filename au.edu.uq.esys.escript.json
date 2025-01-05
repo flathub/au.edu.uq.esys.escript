@@ -258,7 +258,7 @@
             "name": "scalapack-trilinos",
             "buildsystem": "simple",
             "build-commands":[
-                "cmake -DCMAKE_CXX_COMPILER=/app/bin/mpic++ -DCMAKE_C_COMPILER=/app/bin/mpicc -DCMAKE_INSTALL_PREFIX=/app/ -DCMAKE_Fortran_FLAGS='$FCFLAGS -fallow-argument-mismatch'",
+                "cmake -DCMAKE_CXX_COMPILER=/app/bin/mpic++ -DCMAKE_C_COMPILER=/app/bin/mpicc -DCMAKE_INSTALL_PREFIX=/app/",
                 "make",
                 "make install"
             ],
