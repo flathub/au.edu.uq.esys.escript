@@ -258,9 +258,10 @@
             "name": "scalapack-trilinos",
             "buildsystem": "simple",
             "build-commands":[
-                "cmake -DCMAKE_CXX_COMPILER=/app/bin/mpic++ -DCMAKE_C_COMPILER=/app/bin/mpicc -DCMAKE_INSTALL_PREFIX=/app/",
-                "make",
-                "make install"
+                "mkdir BUILD",
+                "cd BUILD && cmake -DCMAKE_CXX_COMPILER=/app/bin/mpic++ -DCMAKE_C_COMPILER=/app/bin/mpicc -DCMAKE_INSTALL_PREFIX=/app/ ..",
+                "cd BUILD && make -j1",
+                "cd BUILD && make install"
             ],
             "sources": [{
                 "type": "git",
