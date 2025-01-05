@@ -261,8 +261,8 @@
                 "-DBUILD_SHARED_LIBS:BOOL=ON",
                 "-DSCALAPACK_BUILD_TESTS:BOOL=OFF",
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
-                "-fallow-argument-mismatch",
-                "-Wno-implicit-function-declaration"
+                "-DCMAKE_Fortran_FLAGS:STRING='$FCFLAGS -fallow-argument-mismatch'",
+                "-DCMAKE_C_FLAGS:STRING='$CFLAGS -Wno-implicit-function-declaration'"
             ],
             "sources": [{
                 "type": "git",
