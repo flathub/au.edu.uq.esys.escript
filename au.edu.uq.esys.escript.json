@@ -258,10 +258,7 @@
             "name": "scalapack-trilinos",
             "buildsystem": "simple",
             "build-options": {
-                "cflags": "-Wno-implicit-function-declaration",
-                 "env": {
-                    "FCFLAGS": "-fallow-argument-mismatch"
-                 }
+                "cflags": "-Wno-implicit-function-declaration"
             },
             "build-commands":[
                 "mkdir BUILD",
@@ -272,8 +269,7 @@
             "sources": [{
                 "type": "git",
                 "url": "https://github.com/Reference-ScaLAPACK/scalapack.git",
-                "tag": "v2.2.0",
-                "commit": "0128dc24c6d018b61ceaac080640014e1d5ec344"
+                "tag": "v2.2.1"
             }]
         },
         {
