@@ -262,7 +262,7 @@
             },
             "build-commands":[
                 "mkdir BUILD",
-                "cd BUILD && cmake -D CMAKE_Fortran_FLAGS:STRING=\"$FCFLAGS -fallow-argument-mismatch\" -DCMAKE_CXX_COMPILER=/app/bin/mpic++ -DCMAKE_C_COMPILER=/app/bin/mpicc -DCMAKE_INSTALL_PREFIX=/app/ ..",
+                "cd BUILD && cmake -D CMAKE_Fortran_FLAGS:STRING=\"$FCFLAGS -fallow-argument-mismatch\" -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_CXX_COMPILER=/app/bin/mpic++ -DCMAKE_C_COMPILER=/app/bin/mpicc -DCMAKE_INSTALL_PREFIX=/app/ ..",
                 "cd BUILD && make",
                 "cd BUILD && make install"
             ],
