@@ -1,60 +1,22 @@
-cmake -B BUILD \
--D MPI_C_COMPILER=`which mpicc` \
--D MPI_CXX_COMPILER=`which mpic++` \
--D MPI_Fortran_COMPILER=`which mpif90` \
--D PYTHON_EXECUTABLE=/usr/bin/python3 \
--D CMAKE_INSTALL_PREFIX=/app/ \
--D Trilinos_ENABLE_CXX11=ON \
--D CMAKE_C_FLAGS=' -w -fopenmp' \
--D CMAKE_CXX_FLAGS=' -w -fopenmp' \
--D Trilinos_ENABLE_Fortran=ON \
--D BUILD_SHARED_LIBS=ON \
--D TPL_ENABLE_MPI=ON \
--D TPL_ENABLE_BLAS=ON \
--D TPL_ENABLE_Boost=ON \
--D TPL_ENABLE_Cholmod=ON \
--D TPL_ENABLE_LAPACK=ON \
--D TPL_ENABLE_METIS=ON \
--D TPL_ENABLE_SuperLU=OFF \
--D TPL_ENABLE_UMFPACK=ON \
--D TPL_ENABLE_PARMETIS=ON \
--D TPL_ENABLE_SCALAPACK=ON \
--D TPL_ENABLE_MUMPS=OFF \
--D TPL_BLAS_INCLUDE_DIRS=/usr/include/suitesparse \
--D TPL_Cholmod_INCLUDE_DIRS=/usr/include/suitesparse \
--D TPL_Cholmod_LIBRARIES='libcholmod.so;libamd.so;libcolamd.so' \
--D TPL_UMFPACK_INCLUDE_DIRS=/usr/include/suitesparse \
--D TPL_Boost_INCLUDE_DIRS=/app/include/boost/include \
--D TPL_Boost_LIBRARY_DIRS=/app/lib \
--D TPL_MUMPS_INCLUDE_DIRS='/usr/include/mumps-seq-shared/' \
--D MPI_BASE_DIR=/app/ \
--D Trilinos_ENABLE_Amesos=ON \
--D Trilinos_ENABLE_Amesos2=ON \
--D Trilinos_ENABLE_AztecOO=ON \
--D Trilinos_ENABLE_Belos=ON \
--D Trilinos_ENABLE_Ifpack=ON \
--D Trilinos_ENABLE_Ifpack2=ON \
--D Trilinos_ENABLE_Kokkos=ON \
--D Trilinos_ENABLE_Komplex=ON \
--D Trilinos_ENABLE_ML=ON \
--D Trilinos_ENABLE_MueLu=ON \
--D Trilinos_ENABLE_Teuchos=ON \
--D Trilinos_ENABLE_Tpetra=ON \
--D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES=ON \
--D KOKKOS_ENABLE_AGGRESSIVE_VECTORIZATION=ON \
--D Tpetra_INST_COMPLEX_DOUBLE=ON \
--D Teuchos_ENABLE_COMPLEX=ON \
--D Tpetra_INST_INT_INT=ON \
--D Tpetra_ENABLE_DEPRECATED_CODE=ON \
--D Trilinos_ENABLE_OpenMP=ON \
--D Trilinos_ENABLE_MPI=ON \
--D Trilinos_ENABLE_EXPLICIT_INSTANTIATION=ON \
--D KOKKOS_ENABLE_COMPILER_WARNINGS=ON \
--D Amesos2_ENABLE_Basker=ON \
--D Tpetra_INST_SERIAL:BOOL=ON \
+cmake -B Fbuild \
+-D CMAKE_INSTALL_PREFIX:PATH=/app \
+-D BUILD_SHARED_LIBS:BOOL=ON \
+-D TPL_ENABLE_Matio=OFF \
+-D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=ON \
+-D Trilinos_ENABLE_ALL_PACKAGES:BOOL=ON \
+-D Trilinos_ENABLE_SECONDARY_TESTED_CODE:BOOL=ON \
+-D Trilinos_ENABLE_PyTrilinos:BOOL=OFF \
 -D Trilinos_ENABLE_Gtest:BOOL=OFF \
 -D Trilinos_ENABLE_TESTS:BOOL=OFF \
 -D Trilinos_ENABLE_TrilinosFrameworkTests:BOOL=OFF \
 -D Trilinos_ENABLE_TrilinosATDMConfigTests:BOOL=OFF \
+-D TPL_ENABLE_gtest:BOOL=OFF \
+-D TPL_ENABLE_MPI:BOOL=ON \
+-D TPL_ENABLE_HDF5:BOOL=ON \
+-D Zoltan_ENABLE_F90INTERFACE:BOOL=ON \
 -D CMAKE_C_FLAGS="$CFLAGS -Wno-incompatible-pointer-types" \
 -D CMAKE_Fortran_FLAGS="$FCFLAGS -fallow-argument-mismatch"
+
+make -C Fbuild
+
+cmake --install Fbuild
