@@ -17,6 +17,6 @@ cmake -B Fbuild \
 -D CMAKE_C_FLAGS="$CFLAGS -Wno-incompatible-pointer-types" \
 -D CMAKE_Fortran_FLAGS="$FCFLAGS -fallow-argument-mismatch"
 
-make -C Fbuild
+make -C VERBOSE=1 -j${FLATPAK_BUILDER_N_JOBS} Fbuild
 
 cmake --install Fbuild
