@@ -13,10 +13,14 @@ cmake -B Fbuild \
 -D TPL_ENABLE_gtest:BOOL=OFF \
 -D TPL_ENABLE_MPI:BOOL=ON \
 -D TPL_ENABLE_HDF5:BOOL=ON \
+-D TPL_ENABLE_HDF5:BOOL=ON \
+-D HDF5_INCLUDE_DIRS:PATH=/app/lib\
+-D HDF5_LIBRARY_DIRS:PATH=/app/include \
+-D HDF5_LIBRARY_NAMES='hdf5;z;hdf5_hl' \
 -D Zoltan_ENABLE_F90INTERFACE:BOOL=ON \
 -D CMAKE_C_FLAGS="$CFLAGS -Wno-incompatible-pointer-types" \
 -D CMAKE_Fortran_FLAGS="$FCFLAGS -fallow-argument-mismatch"
 
-make VERBOSE=1 -j${FLATPAK_BUILDER_N_JOBS} -C Fbuild
+make VERBOSE=1 -C Fbuild
 
 cmake --install Fbuild
