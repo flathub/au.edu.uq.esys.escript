@@ -1,5 +1,5 @@
---- a/trilinos_source/packages/teuchos/core/src/Teuchos_BigUInt.hpp	2025-02-07 18:02:38.724481538 -0500
-+++ b/trilinos_source/packages/teuchos/core/src/Teuchos_BigUInt.hpp	2025-02-07 19:46:03.013702486 -0500
+--- a/packages/teuchos/core/src/Teuchos_BigUInt.hpp	2025-02-07 18:02:38.724481538 -0500
++++ b/packages/teuchos/core/src/Teuchos_BigUInt.hpp	2025-02-07 19:46:03.013702486 -0500
 @@ -43,6 +43,7 @@
  #define TEUCHOS_BIG_UINT_HPP
  
