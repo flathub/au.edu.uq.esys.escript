@@ -31,9 +31,11 @@ cmake -B Fbuild \
 -D Trilinos_ENABLE_Kokkos=ON \
 -D Trilinos_ENABLE_Komplex=ON \
 -D Trilinos_ENABLE_ML=ON \
+-D Trilinos_ENABLE_Epetra:BOOL=ON \
+-D Trilinos_ENABLE_EpetraExt=ON \
+-D Trilinos_ENABLE_Tpetra=ON \
 -D Trilinos_ENABLE_MueLu=ON \
 -D Trilinos_ENABLE_Teuchos=ON \
--D Trilinos_ENABLE_Tpetra=ON \
 -D Trilinos_ENABLE_ALL_OPTIONAL_PACKAGES=ON \
 -D Kokkos_ENABLE_AGGRESSIVE_VECTORIZATION=ON \
 -D Tpetra_INST_COMPLEX_DOUBLE=ON \
