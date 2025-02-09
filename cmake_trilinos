@@ -48,6 +48,7 @@ cmake -B Fbuild \
 -D Amesos2_ENABLE_Basker=ON \
 -D Tpetra_INST_SERIAL:BOOL=ON \
 -D Trilinos_ENABLE_TESTS=OFF \
+-D TPL_ENABLE_gtest:BOOL=OFF \
 -D CMAKE_C_FLAGS="$CFLAGS -Wno-incompatible-pointer-types" \
 -D CMAKE_Fortran_FLAGS="$FCFLAGS -fallow-argument-mismatch"
 
