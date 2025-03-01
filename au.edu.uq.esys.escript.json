@@ -87,7 +87,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.tar.bz2",
+                    "url": "https://archives.boost.io/release/1.82.0/source/boost_1_82_0.tar.bz2",
                     "sha256": "a6e1ab9b0860e6a2881dd7b21fe9f737a095e5f33a3a874afc6a345228597ee6"
                 }
             ]
@@ -153,20 +153,6 @@
                     "type": "archive",
                     "url": "https://gmsh.info/src/gmsh-4.11.1-source.tgz",
                     "sha256": "c5fe1b7cbd403888a814929f2fd0f5d69e27600222a18c786db5b76e8005b365"
-                }
-            ]
-        },
-        {
-            "name": "pip",
-            "buildsystem": "simple",
-            "build-commands": [
-                "install -Dm755 pip.pyz -t /app/bin/"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://bootstrap.pypa.io/pip/pip.pyz",
-                    "sha256": "c59df64b826d5baa978829fd1e1b3ea2e748f73dce7cce58d09aa28a1c9323a7"
                 }
             ]
         },
