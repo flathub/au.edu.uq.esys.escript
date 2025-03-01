@@ -157,20 +157,6 @@
             ]
         },
         {
-            "name": "pip",
-            "buildsystem": "simple",
-            "build-commands": [
-                "install -Dm755 pip.pyz -t /app/bin/"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://bootstrap.pypa.io/pip/pip.pyz",
-                    "sha256": "c59df64b826d5baa978829fd1e1b3ea2e748f73dce7cce58d09aa28a1c9323a7"
-                }
-            ]
-        },
-        {
             "name": "escript",
             "buildsystem": "simple",
             "build-commands": [
