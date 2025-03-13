@@ -217,7 +217,7 @@
         },
         {
             "name": "gmsh",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DDEFAULT=0",
                 "-DENABLE_BUILD_LIB=1",
@@ -287,7 +287,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/LutzGross/esys-escript.github.io"
+                    "url": "https://github.com/adaell/esys-escript.github.io",
+                    "commit": "5c32eb93e514ccde51fddcc637dc418cef361fb8"
                 }
             ]
         }
