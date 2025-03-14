@@ -282,7 +282,7 @@
                 "cp ./tools/flatpak/au.edu.uq.esys.escript.desktop /app/share/applications/au.edu.uq.esys.escript.desktop",
                 "cp ./tools/flatpak/au.edu.uq.esys.escript.appdata.xml /app/share/metainfo/au.edu.uq.esys.escript.appdata.xml",
                 "export PATH=/app/bin:$PATH",
-                "scons options_file=scons/flatpak_options.py cxx_extra='-fPIC' -j`nproc --all` || cat config.log"
+                "scons options_file=scons/flatpak_options.py cxx_extra='-fPIC' -j`nproc --all` prefix=${FLATPAK_DEST} || cat config.log"
             ],
             "sources": [
                 {
