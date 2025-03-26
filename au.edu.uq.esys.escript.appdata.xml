@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2025 Adam Ellery <adam.ellery@outlook.com> -->
 <component type="console-application">
+<!-- Copyright 2025 Adam Ellery <adam.ellery@outlook.com> -->
   <id>au.edu.uq.esys.escript</id>
   <metadata_license>CC-BY-SA-3.0</metadata_license>
   <project_license>Apache-2.0</project_license>
