@@ -12,6 +12,10 @@
         "cflags": "-O3 -fPIC",
         "cxxflags": "-O3 -fPIC"
     },
+    "finish-args": [
+        "--filesystem=home",
+        "--share=network"
+    ],
     "modules": [
         {
             "name": "python3-numpy",
@@ -271,31 +275,25 @@
             "name": "escript",
             "buildsystem": "simple",
             "build-commands": [
-                "mkdir -p /app/share/icons/hicolor/64x64/apps",
-                "mkdir -p /app/share/icons/hicolor/128x128/apps/",
-                "mkdir -p /app/share/icons/hicolor/256x256/apps/",
-                "mkdir -p /app/share/applications/",
-                "mkdir -p /app/share/metainfo",
-                "cp ./tools/flatpak/64x64_au.edu.uq.esys.escript.png /app/share/icons/hicolor/64x64/apps/au.edu.uq.esys.escript.png",
-                "cp ./tools/flatpak/128x128_au.edu.uq.esys.escript.png /app/share/icons/hicolor/128x128/apps/au.edu.uq.esys.escript.png",
-                "cp ./tools/flatpak/256x256_au.edu.uq.esys.escript.png /app/share/icons/hicolor/256x256/apps/au.edu.uq.esys.escript.png",
-                "cp ./tools/flatpak/au.edu.uq.esys.escript.desktop /app/share/applications/au.edu.uq.esys.escript.desktop",
-                "cp ./tools/flatpak/au.edu.uq.esys.escript.appdata.xml /app/share/metainfo/au.edu.uq.esys.escript.appdata.xml",
-                "export PATH=/app/bin:$PATH",
                 "scons options_file=scons/flatpak_options.py cxx_extra='-fPIC' -j`nproc --all` prefix=${FLATPAK_DEST} trilinos=0 || cat config.log",
                 "cp bin/run-escript ${FLATPAK_DEST}/bin/run-escript"
+            ],
+            "post-install" : [
+                "install -Dm644 tools/flatpak/au.edu.uq.esys.escript.png /app/share/icons/hicolor/256x256/apps/au.edu.uq.esys.escript.png",
+                "install -Dm644 tools/flatpak/au.edu.uq.esys.escript.desktop /app/share/applications/au.edu.uq.esys.escript.desktop",
+                "install -Dm644 au.edu.uq.esys.escript.appdata.xml /app/share/appdata/au.edu.uq.esys.escript.appdata.xml"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/adaell/esys-escript.github.io",
                     "commit": "5c32eb93e514ccde51fddcc637dc418cef361fb8"
+                },
+                {
+                    "type": "file",
+                    "path": "au.edu.uq.esys.escript.appdata.xml"
                 }
             ]
         }
-    ],
-    "finish-args": [
-        "--filesystem=home",
-        "--share=network"
     ]
 }
