@@ -61,4 +61,11 @@
   <provides>
       <binary>run-escript</binary>
   </provides>
+  <keywords>
+    <keyword>pde solver</keyword>
+    <keyword>finite element method</keyword>
+    <keyword>python library</keyword>
+    <keyword>parallel computing</keyword>
+    <keyword>scientific simulation</keyword>
+  </keywords>
 </component>
