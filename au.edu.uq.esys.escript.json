@@ -144,8 +144,7 @@
             "name": "escript",
             "buildsystem": "simple",
             "build-commands": [
-                "ln -s /app/lib/python3.10/site-packages/numpy/core/include/numpy /app/include/",
-                "ln -s /app/bin/pip.pyz /app/bin/pip",
+                "ln -s /app/lib/python3.13/site-packages/numpy/core/include/numpy /app/include/",
                 "scons options_file=scons/flatpak_options.py umfpack=0 trilinos=0 werror=0 silo=0 cxx_extra='-fPIC -Wno-psabi' -j`nproc --all`"
             ],
             "post-install" : [
