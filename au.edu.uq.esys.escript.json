@@ -41,8 +41,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/OSGeo/PROJ.git",
-                    "tag": "9.4.1",
-                    "commit": "875a485fa5ef435c57f7682f904dd31ca92253ab"
+                    "tag": "9.7.1",
+                    "commit": "e37c81729a6c52e3ee49ad6ae5bed8f1ab7826e5"
                 }
             ]
         },
