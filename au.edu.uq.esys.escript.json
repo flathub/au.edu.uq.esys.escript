@@ -14,6 +14,22 @@
         "--env=PATH=/var/data/python/bin:/app/bin:/usr/bin"
     ],
     "modules": [
+        {
+            "name": "python",
+            "builddir": true,
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--exec-prefix=/app",
+                "--enable-shared"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.python.org/ftp/python/3.13.11/Python-3.13.11.tar.xz",
+                    "sha256": "16ede7bb7cdbfa895d11b0642fa0e523f291e6487194d53cf6d3b338c3a17ea2"
+                }
+            ]
+        },
         "python3-modules.json",
         {
             "name": "proj",
