@@ -1,7 +1,7 @@
 {
     "app-id": "au.edu.uq.esys.escript",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "24.08",
+    "runtime-version": "25.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "run-escript",
     "finish-args": [
@@ -11,25 +11,9 @@
         "--device=dri",
         "--socket=fallback-x11",
         "--socket=wayland",
-        "--env=PATH=/var/data/python/bin:/app/bin:/usr/bin"
+        "--env=PATH=/var/data/python/bin:/usr/bin:/app/bin"
     ],
     "modules": [
-        {
-            "name": "python",
-            "builddir": true,
-            "buildsystem": "autotools",
-            "config-opts": [
-                "--exec-prefix=/app",
-                "--enable-shared"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://www.python.org/ftp/python/3.10.12/Python-3.10.12.tar.xz",
-                    "sha256": "afb74bf19130e7a47d10312c8f5e784f24e0527981eab68e20546cfb865830b8"
-                }
-            ]
-        },
         "python3-modules.json",
         {
             "name": "proj",
@@ -41,8 +25,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/OSGeo/PROJ.git",
-                    "tag": "9.4.1",
-                    "commit": "875a485fa5ef435c57f7682f904dd31ca92253ab"
+                    "tag": "9.7.1",
+                    "commit": "e37c81729a6c52e3ee49ad6ae5bed8f1ab7826e5"
                 }
             ]
         },
@@ -80,15 +64,15 @@
             "name": "boost",
             "buildsystem": "simple",
             "build-commands": [
-                "./bootstrap.sh --with-toolset=gcc --with-icu --with-python-version=3.10",
+                "./bootstrap.sh --with-toolset=gcc --with-icu --with-python-version=3.13",
                 "./b2 stage --prefix=\"${FLATPAK_DEST}\" --with-python --with-iostreams --with-random variant=release threading=multi link=shared toolset=gcc  debug-symbols=off",
                 "./b2 install --prefix=\"${FLATPAK_DEST}\" --with-python --with-iostreams --with-random variant=release  threading=multi link=shared toolset=gcc debug-symbols=off"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://archives.boost.io/release/1.82.0/source/boost_1_82_0.tar.bz2",
-                    "sha256": "a6e1ab9b0860e6a2881dd7b21fe9f737a095e5f33a3a874afc6a345228597ee6"
+                    "url": "https://archives.boost.io/release/1.89.0/source/boost_1_89_0.tar.bz2",
+                    "sha256": "85a33fa22621b4f314f8e85e1a5e2a9363d22e4f4992925d4bb3bc631b5a0c7a"
                 }
             ]
         },
@@ -151,8 +135,24 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gmsh.info/src/gmsh-4.11.1-source.tgz",
-                    "sha256": "c5fe1b7cbd403888a814929f2fd0f5d69e27600222a18c786db5b76e8005b365"
+                    "url": "https://gmsh.info/src/gmsh-4.15.0-source.tgz",
+                    "sha256": "abb2632715bd7d0130ded7144fd6263635cd7dea883b8df61ba4da58ce6a1dfe"
+                }
+            ]
+        },
+        {
+            "name": "python",
+            "builddir": true,
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--exec-prefix=/app",
+                "--enable-shared"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.python.org/ftp/python/3.13.11/Python-3.13.11.tar.xz",
+                    "sha256": "16ede7bb7cdbfa895d11b0642fa0e523f291e6487194d53cf6d3b338c3a17ea2"
                 }
             ]
         },
@@ -160,8 +160,7 @@
             "name": "escript",
             "buildsystem": "simple",
             "build-commands": [
-                "ln -s /app/lib/python3.10/site-packages/numpy/core/include/numpy /app/include/",
-                "ln -s /app/bin/pip.pyz /app/bin/pip",
+                "ln -s /app/lib/python3.13/site-packages/numpy/core/include/numpy /app/include/",
                 "scons options_file=scons/flatpak_options.py umfpack=0 trilinos=0 werror=0 silo=0 cxx_extra='-fPIC -Wno-psabi' -j`nproc --all`"
             ],
             "post-install" : [
