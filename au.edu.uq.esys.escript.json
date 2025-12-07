@@ -11,25 +11,9 @@
         "--device=dri",
         "--socket=fallback-x11",
         "--socket=wayland",
-        "--env=PATH=/var/data/python/bin:/app/bin:/usr/bin"
+        "--env=PATH=/var/data/python/bin:/usr/bin:/app/bin"
     ],
     "modules": [
-        {
-            "name": "python",
-            "builddir": true,
-            "buildsystem": "autotools",
-            "config-opts": [
-                "--exec-prefix=/app",
-                "--enable-shared"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://www.python.org/ftp/python/3.13.11/Python-3.13.11.tar.xz",
-                    "sha256": "16ede7bb7cdbfa895d11b0642fa0e523f291e6487194d53cf6d3b338c3a17ea2"
-                }
-            ]
-        },
         "python3-modules.json",
         {
             "name": "proj",
@@ -153,6 +137,22 @@
                     "type": "archive",
                     "url": "https://gmsh.info/src/gmsh-4.15.0-source.tgz",
                     "sha256": "abb2632715bd7d0130ded7144fd6263635cd7dea883b8df61ba4da58ce6a1dfe"
+                }
+            ]
+        },
+        {
+            "name": "python",
+            "builddir": true,
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--exec-prefix=/app",
+                "--enable-shared"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.python.org/ftp/python/3.13.11/Python-3.13.11.tar.xz",
+                    "sha256": "16ede7bb7cdbfa895d11b0642fa0e523f291e6487194d53cf6d3b338c3a17ea2"
                 }
             ]
         },
