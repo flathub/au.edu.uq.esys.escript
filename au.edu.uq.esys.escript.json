@@ -151,8 +151,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gmsh.info/src/gmsh-4.11.1-source.tgz",
-                    "sha256": "c5fe1b7cbd403888a814929f2fd0f5d69e27600222a18c786db5b76e8005b365"
+                    "url": "https://gmsh.info/src/gmsh-4.15.0-source.tgz",
+                    "sha256": "abb2632715bd7d0130ded7144fd6263635cd7dea883b8df61ba4da58ce6a1dfe"
                 }
             ]
         },
