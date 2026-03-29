@@ -8,9 +8,9 @@
 -pythonlibpath = '/app/lib'
 -pythonincpath = '/app/include/python3.7m'
 +pythoncmd='python3'
-+pythonlibpath = '/app/lib/python3.10'
-+pythonincpath = '/app/include/python3.10'
-+pythonlibname='python3.10'
++pythonlibpath = '/app/lib/python3.13'
++pythonincpath = '/app/include/python3.13'
++pythonlibname='python3.13'
  
  boost_prefix=['/app/include','/app/lib']
 +
