@@ -1,7 +1,7 @@
 {
     "app-id": "au.edu.uq.esys.escript",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "24.08",
+    "runtime-version": "26.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "run-escript",
     "cleanup": [
@@ -286,8 +286,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/adaell/esys-escript.github.io",
-                    "commit": "5c32eb93e514ccde51fddcc637dc418cef361fb8"
+                    "url": "https://github.com/LutzGross/esys-escript.github.io.git",
+                    "tag": "6.1.1"
                 },
                 {
                     "type": "file",
