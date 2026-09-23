@@ -1,6 +1,11 @@
 --- a/scons/flatpak_options.py	2026-09-22 17:01:50.441231698 -0500
-+++ b/scons/flatpak_options.py	2026-09-22 17:05:34.145239664 -0500
-@@ -22,17 +22,14 @@
++++ b/scons/flatpak_options.py	2026-09-23 13:48:42.704183108 -0500
+@@ -18,28 +18,25 @@
+ escript_opts_version = 203
+ #cxx_extra = '-Wno-literal-suffix'
+ openmp = True
+-# mpi='OPENMPI'
++mpi='OPENMPI'
  
  prefix='/app'
  
@@ -20,3 +25,13 @@
  domains=['finley','ripley','speckley']
  hdf5_prefix=['/app/include','/app/lib']
  hdf5_libs=['hdf5_cpp','hdf5','hdf5_hl_cpp']
+ mpi_prefix=['/app/include','/app/lib']
+-mpi_libs=['mpi_cxx']
+-lapack=0
+-lapack_prefix = ['/app/include/', '/app/lib']
++mpi_libs=['mpi']
++lapack=1
++lapack_prefix = ['/app/include/', '/app/lib64/']
+ ld_extra=''
+ paso=1
+ p4est=0
