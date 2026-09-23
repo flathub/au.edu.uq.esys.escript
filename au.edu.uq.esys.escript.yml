@@ -7,14 +7,20 @@ command: run-escript
 finish-args:
   - --filesystem=home
   - --share=network
+  - --env=LD_LIBRARY_PATH=/app/lib:/app/lib64
   
 cleanup: 
-  - /app/man
-  - /app/share
+  - /share/man
+  - /share/doc
+  - /include
+  - "*.la"
+  - "*.a"
   
 build-options:
   cflags: "-O3 -fPIC"
   cxxflags: "-O3 -fPIC"
+  env:
+    LD_LIBRARY_PATH: /app/lib:/app/lib64
 
 modules:
   - python3-modules.json
@@ -48,9 +54,13 @@ modules:
       - -DHDF5_ENABLE_PARALLEL=ON
       - -DCMAKE_CXX_COMPILER=mpicxx
       - -DCMAKE_Fortran_COMPILER=mpif90
+      - -DHDF5_BUILD_FORTRAN=ON
       - -DCMAKE_C_COMPILER=mpicc
       - -DHDF5_ALLOW_UNSUPPORTED=ON
       - -DALLOW_UNSUPPORTED=ON
+      - -DHDF5_BUILD_CPP_LIB=ON
+      - -DHDF5_ENABLE_ZLIB_SUPPORT=ON
+      - -DHDF5_BUILD_HL_LIB=ON
     sources:
       - type: archive
         url: https://github.com/HDFGroup/hdf5/archive/refs/tags/2.2.0.tar.gz
@@ -88,7 +98,7 @@ modules:
   - name: lapack
     buildsystem: simple
     build-commands:
-      - cmake -Bbuild -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}
+      - cmake -Bbuild -DBUILD_SHARED_LIBS=ON -DLAPACKE=ON -DCBLAS=ON -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}
       - cd build && make -j`nproc` && make install
     sources:
       - type: archive
@@ -107,8 +117,11 @@ modules:
   - name: escript
     buildsystem: simple
     build-commands:
-      - scons options_file=scons/flatpak_options.py cxx_extra='-fPIC' -j`nproc --all` prefix=${FLATPAK_DEST} trilinos=0
-      - cp bin/run-escript ${FLATPAK_DEST}/bin/run-escript
+      - scons options_file=scons/flatpak_options.py cxx_extra='-fPIC' -j`nproc --all` prefix=${FLATPAK_DEST}
+      - cp -r bin/* ${FLATPAK_DEST}/bin/
+      - cp -r lib/* ${FLATPAK_DEST}/lib/
+      - cp -r esys.trilinos/* ${FLATPAK_DEST}/
+      - cp -r esys/* ${FLATPAK_DEST}/lib/python3.14/site-packages/
     post-install:
       - install -Dm644 tools/flatpak/au.edu.uq.esys.escript.png /app/share/icons/hicolor/256x256/apps/au.edu.uq.esys.escript.png
       - install -Dm644 tools/flatpak/au.edu.uq.esys.escript.desktop /app/share/applications/au.edu.uq.esys.escript.desktop
