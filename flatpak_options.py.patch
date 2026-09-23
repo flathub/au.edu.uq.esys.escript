@@ -1,0 +1,22 @@
+--- a/scons/flatpak_options.py	2026-09-22 17:01:50.441231698 -0500
++++ b/scons/flatpak_options.py	2026-09-22 17:05:34.145239664 -0500
+@@ -22,17 +22,14 @@
+ 
+ prefix='/app'
+ 
+-import os
+-import sys
+-
+ cxx_extra='-w -O3 -march=native'
+ 
+ #pythoncmd='/app/bin/python3'
+ pythonlibpath = '/app/lib'
+-pythonincpath = '/usr/include/python3.12'
++pythonincpath = '/usr/include/python3.14'
+ 
+ boost_prefix=['/app/include','/app/lib']
+-boost_libs = ['boost_python312','boost_iostreams','boost_random']
++boost_libs = ['boost_python314','boost_iostreams','boost_random']
+ domains=['finley','ripley','speckley']
+ hdf5_prefix=['/app/include','/app/lib']
+ hdf5_libs=['hdf5_cpp','hdf5','hdf5_hl_cpp']
