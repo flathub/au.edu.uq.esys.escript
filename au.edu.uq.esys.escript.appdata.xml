@@ -18,7 +18,7 @@
     </p>
   </description>
   <launchable type="desktop-id">au.edu.uq.esys.escript.desktop</launchable>
-  <url type="homepage">https://github.com/esys-escript/esys-escript.github.io</url>
+  <url type="homepage">https://github.com/LutzGross/esys-escript.github.io</url>
   <releases>
     <release date="2025-03-20" version="6.0"></release>
   </releases>
