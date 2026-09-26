@@ -1,23 +1,89 @@
---- a/scons/flatpak_options.py	2024-09-06 15:44:34.326102896 -0500
-+++ n/scons/flatpak_options.py	2024-09-06 15:50:41.539115973 -0500
-@@ -32,13 +32,17 @@
+--- a/scons/flatpak_options.py	2026-09-22 17:01:50.441231698 -0500
++++ b/scons/flatpak_options.py	2026-09-25 22:32:22.772361581 -0500
+@@ -18,47 +18,59 @@
+ escript_opts_version = 203
+ #cxx_extra = '-Wno-literal-suffix'
+ openmp = True
+-# mpi='OPENMPI'
++mpi='OPENMPI'
  
- cxx_extra='-w -O3'
+-prefix='/app'
++prefix = '/app'
  
--pythoncmd='/app/bin/python3'
--pythonlibpath = '/app/lib'
--pythonincpath = '/app/include/python3.7m'
-+pythoncmd='python3'
-+pythonlibpath = '/app/lib/python3.10'
-+pythonincpath = '/app/include/python3.10'
-+pythonlibname='python3.10'
+-import os
+-import sys
+-
+-cxx_extra='-w -O3 -march=native'
++cxx_extra = '-w -O3 -march=native'
  
- boost_prefix=['/app/include','/app/lib']
+ #pythoncmd='/app/bin/python3'
+ pythonlibpath = '/app/lib'
+-pythonincpath = '/usr/include/python3.12'
++pythonincpath = '/usr/include/python3.14'
 +
- netcdf = 4
- netcdf_prefix=['/app/include','/app/lib']
-+netcdf_libs = ['netcdf', 'netcdf_c++4']
++boost_prefix = ['/app/include','/app/lib']
++boost_libs = ['boost_python314','boost_iostreams','boost_random']
 +
- mpi_prefix=['/app/include','/app/lib']
- mpi_libs=['mpi_cxx']
++domains = ['finley','ripley','speckley']
++
++hdf5_prefix = ['/app/include','/app/lib']
++hdf5_libs = ['hdf5_cpp','hdf5','hdf5_hl_cpp']
++
++mpi_prefix = ['/app/include','/app/lib']
++mpi_libs = ['mpi']
++mpi4py = True
++
++lapack=1
++lapack_prefix = ['/app/include/', '/app/lib64/']
++lapack_libs = ['lapacke','lapack', 'cblas', 'blas']
+ 
+-boost_prefix=['/app/include','/app/lib']
+-boost_libs = ['boost_python312','boost_iostreams','boost_random']
+-domains=['finley','ripley','speckley']
+-hdf5_prefix=['/app/include','/app/lib']
+-hdf5_libs=['hdf5_cpp','hdf5','hdf5_hl_cpp']
+-mpi_prefix=['/app/include','/app/lib']
+-mpi_libs=['mpi_cxx']
+-lapack=0
+-lapack_prefix = ['/app/include/', '/app/lib']
+ ld_extra=''
+ paso=1
+ p4est=0
+-silo=0
+-silo_prefix = ['/app/include/', '/app/lib']
+-silo_libs = ['silo','hdf5']
+-trilinos=True
++
++netcdf = True
++netcdf_prefix = ['/app/include', '/app/lib/']
++netcdf_libs = ['netcdf_c++4', 'netcdf']
++
++zlib = True
++zlib_libs = ['z']
++
++trilinos = True
+ trilinos_prefix = ['/app/include/', '/app/lib']
+-trilinos_make_sh='tools/flatpak/flatpak_trilinos.sh'
+-umfpack=False
++trilinos_make_sh = 'tools/flatpak/flatpak_trilinos.sh'
++
++umfpack = False
  umfpack_prefix = ['/app/include','/app/lib']
+ umfpack_libs = ['umfpack', 'blas', 'amd']
+-visit=0
+-werror=0
+-
+-
+-# boost-python library/libraries to link against
+ 
++silo = True
++silo_prefix = ['/app/include', '/app/lib']
++silo_libs = ['siloh5', 'hdf5']
+ 
++sympy = True
+ 
++visit = 0
++werror = 0
+ 
+ 
++# boost-python library/libraries to link against
