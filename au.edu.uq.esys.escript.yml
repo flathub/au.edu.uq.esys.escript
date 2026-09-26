@@ -12,6 +12,8 @@ finish-args:
   - --device=dri
   - --share=ipc
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib/esys:/app/lib64
+  - --env=OMP_PROC_BIND=spread
+  - --env=OMP_PLACES=threads
   
 cleanup: 
   - /share/man
