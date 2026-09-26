@@ -129,7 +129,7 @@
                     "url": "https://files.pythonhosted.org/packages/95/9c/c510029fc6ef33a6275cd2c5d3cecd6613dfd6aa401d57c54f1c18852ccf/setuptools-84.0.0-py3-none-any.whl",
                     "sha256": "51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670"
                 },
-		{
+		        {
                     "type": "file",
                     "url": "https://files.pythonhosted.org/packages/ca/63/3384ebb3b51af9610086b23ea976e6d27d6d97bf140a76a365bd77a3eb32/mpmath-1.1.0.tar.gz",
                     "sha256": "fc17abe05fbab3382b61a123c398508183406fa132e0223874578e20946499f6"
@@ -138,6 +138,27 @@
                     "type": "file",
                     "url": "https://files.pythonhosted.org/packages/dd/f6/ed485ff22efdd7b371d0dbbf6d77ad61c3b3b7e0815a83c89cbb38ce35de/sympy-1.3.tar.gz",
                     "sha256": "e1319b556207a3758a0efebae14e5e52c648fc1db8975953b05fff12b6871b54"
+                }
+            ]
+        },
+        {
+            "name": "mpi4py",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} mpi4py"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "only-arches": ["x86_64"],
+                    "url": "https://files.pythonhosted.org/packages/26/e4/32575e9b0d5380b08ffa04958c7a13b1bab86e3674f33b6de3827fbbe14c/mpi4py-4.1.2-cp314-cp314-manylinux1_x86_64.manylinux_2_5_x86_64.whl",
+                    "sha256": "d53e8f7182bf125b37155f679b301a21cd64e5ae6861ca0ab989c9d2b2073bbd"
+                },
+                {
+                    "type": "file",
+                    "only-arches": ["aarch64"],
+                    "url": "https://files.pythonhosted.org/packages/87/a8/ad5e925da9de402704ecfe8715348b068fb0b65059109c65dafb111f95e4/mpi4py-4.1.2-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+                    "sha256": "7cbf982d3425fd06890fbcff79ba19a7435e93bc74e5711ca8ac0b64d0c3ece9"
                 }
             ]
         }
