@@ -159,11 +159,6 @@ modules:
         tag: 6.1.1
       - type: file
         path: au.edu.uq.esys.escript.appdata.xml
-      - type: patch
-        paths: 
-          - flatpak_options.py.patch
-          - SConscript.patch
-          - SConstruct.patch
        
        
         
