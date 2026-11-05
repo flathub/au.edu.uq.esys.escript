@@ -156,14 +156,9 @@ modules:
     sources:
       - type: git
         url: https://github.com/LutzGross/esys-escript.github.io.git
-        tag: 6.1.1
+        commit: 5c105dffe4bb578fd82b85a7294bb1bea7d231c7
       - type: file
         path: au.edu.uq.esys.escript.appdata.xml
-      - type: patch
-        paths: 
-          - flatpak_options.py.patch
-          - SConscript.patch
-          - SConstruct.patch
        
        
         
